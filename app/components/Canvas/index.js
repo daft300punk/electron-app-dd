@@ -1,5 +1,5 @@
 import React from 'react';
-import paper from 'paper';
+import paper, { view } from 'paper';
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -9,17 +9,30 @@ class Canvas extends React.Component {
 
   componentDidMount() {
     const canvas = document.getElementById('canvas');
+    canvas.style.width = '100%';
     paper.setup(canvas);
-    const path = new paper.Path();
-    path.strokeColor = 'black';
-    const start = new paper.Point(100, 100);
-    path.moveTo(start);
-    path.lineTo(start.add([200, -50]));
-    paper.view.draw();
+
+    let myPath;
+
+    view.onMouseDown = (event) => {
+      myPath = new paper.Path();
+      myPath.strokeColor = 'black';
+      myPath.strokeWidth = 3;
+    }
+
+    view.onMouseDrag = (event) => {
+      myPath.add(event.point);
+    }
+
+    view.onMouseUp = (event) => {
+    }
   }
 
   render() {
-    return <canvas id="canvas" />;
+    const style={
+      background: 'rgba(0, 0, 0, .1)'
+    }
+    return <canvas id="canvas" style={style} data-paper-resize />;
   }
 
 }
