@@ -1,0 +1,23 @@
+.paperWrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.paperItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.moduleImage {
+  height: 200px;
+  width: 200px;
+  background: rgba(0, 0, 0, .1);
+}
+
+.moduleTitle {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
