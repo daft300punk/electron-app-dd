@@ -9,9 +9,13 @@
   flex-direction: column;
 }
 
+.paperItem:hover {
+  border: 2px solid lightskyblue;
+}
+
 .moduleImage {
   height: 200px;
-  width: 200px;
+  width: 100%;
   background: rgba(0, 0, 0, .1);
 }
 
