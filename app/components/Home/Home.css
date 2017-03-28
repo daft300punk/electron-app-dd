@@ -1,0 +1,27 @@
+h2 {
+  color: rgba(0, 0, 0, 1);
+  font-weight: 500;
+  margin: 20px 0 5px 0;
+}
+
+h4 {
+  color: rgba(0, 0, 0, .6);
+  font-weight: normal;
+  margin: 0 0 10px 0;
+}
+
+.homeBody {
+  margin-left: 60px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainTitle {
+  margin-bottom: 10px;
+}
+
+.moduleList {
+  display: flex;
+  flex-direction: row;
+}
