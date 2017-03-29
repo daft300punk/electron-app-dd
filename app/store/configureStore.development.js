@@ -15,7 +15,7 @@ const router = routerMiddleware(hashHistory);
 export default function configureStore() {
   const store = createStore(
     rootReducer,
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk, logger, router)
   );
 
   if (module.hot) {
