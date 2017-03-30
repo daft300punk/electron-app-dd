@@ -5,7 +5,7 @@ import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Link from 'react-router';
 import { browserHistory } from 'react-router';
-import paper, {view} from 'paper';
+import paper, { view } from 'paper';
 
 class Module1 extends Component {
   constructor(props) {
@@ -31,10 +31,23 @@ class Module1 extends Component {
       strokeWidth: 4,
       opacity: .2,
     });
-    pathSuperimposed.onFrame = function(event) {
-      if(event.count < length / 2) {
-        pathSuperimposed.add(path1.getPointAt(event.count * 2));
+    pathSuperimposed.onFrame = function (event) {
+      if (event.count < length) {
+        pathSuperimposed.add(path1.getPointAt(event.count));
       }
+    }
+
+    var userDrawnPath;
+
+    view.onMouseDown = (e) => {
+      userDrawnPath = new paper.Path({
+        strokeColor: '#73ce1f',
+        strokeWidth: 3,
+      });
+    }
+
+    view.onMouseDrag = (e) => {
+      userDrawnPath.add(e.point);
     }
   }
 
