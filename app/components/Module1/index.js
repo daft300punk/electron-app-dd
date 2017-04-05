@@ -18,38 +18,73 @@ class Module1 extends Component {
     canvas.style.width = '100%';
     paper.setup(canvas);
 
-    var path1 = new paper.Path('M98.36,214.208l2.186-1.093V210.2l-3.378,0.117l1.174,4.137L98.36,214.208z');
+    let path1 = new paper.CompoundPath('M66.44,73.5H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65');
     path1.strokeColor = '#f5f5f5';
     path1.strokeWidth = 3;
-    path1.scale(50);
+    //path1.scale(50);
     path1.visible = false;
 
-    const length = path1.length;
+    let length = path1.length;
+    console.log(path1.children);
 
-    let pathSuperimposed = new paper.Path({
-      strokeColor: 'red',
-      strokeWidth: 4,
-      opacity: .2,
-    });
+    let currChildPathIndex;
+
+
+    let pathSuperimposed = new paper.CompoundPath();
+    pathSuperimposed.strokeColor = 'red';
+    pathSuperimposed.strokeWidth = 4;
+
+    if (path1.hasChildren()) {
+      currChildPathIndex = 0;
+      pathSuperimposed.addChild(new paper.Path());
+      console.log(pathSuperimposed);
+    }
+
+    let circle = new paper.Path.Circle({
+      radius: 6,
+      fillColor: 'white',
+      shadowColor: new paper.Color(0, 0, 0, .5),
+      shadowBlur: 16,
+      shadowOffset: new paper.Point(0, 3)
+    })
+
+
+    //TODO: Refactor this ugly piece of shit, probably move whole of componentDidMount.
     pathSuperimposed.onFrame = function (event) {
       if (event.count < length) {
-        pathSuperimposed.add(path1.getPointAt(event.count));
+        if (path1.children[currChildPathIndex]) {
+          if (event.count % path1.children[currChildPathIndex].length > path1.children[currChildPathIndex].length - 2) {
+            currChildPathIndex++;
+            pathSuperimposed.addChild(new paper.Path());
+            console.log(currChildPathIndex);
+          } else {
+            pathSuperimposed.children[currChildPathIndex].add(path1.children[currChildPathIndex].getPointAt(event.count % path1.children[currChildPathIndex].length));
+            circle.position = path1.children[currChildPathIndex].getPointAt(event.count % path1.children[currChildPathIndex].length);
+          }
+        }
+
+      }
+      else {
+        circle.visible = false;
       }
     }
 
-    var userDrawnPath;
+    let userDrawnPath;
 
     view.onMouseDown = (e) => {
       userDrawnPath = new paper.Path({
         strokeColor: '#73ce1f',
-        strokeWidth: 3,
+        strokeWidth: 2,
+        blendMode: 'multiply'
       });
+      userDrawnPath.add(e.point);
     }
 
     view.onMouseDrag = (e) => {
       userDrawnPath.add(e.point);
     }
   }
+
 
   render() {
     const style = {
