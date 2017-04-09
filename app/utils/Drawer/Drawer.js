@@ -1,4 +1,4 @@
-import paper, { view } from 'paper';
+import paper, { view, project } from 'paper';
 
 class Drawer {
   constructor() {
@@ -102,6 +102,10 @@ class Drawer {
       return true;
     }
     return false;
+  }
+
+  clearEverything() {
+    project.clear();
   }
 }
 
