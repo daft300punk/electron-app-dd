@@ -27,9 +27,7 @@ class Module1 extends Component {
   render() {
     const style = {
       flexGrow: '1',
-      background: 'rgba(0, 0, 0, .05)',
-      height: '100%',
-      width: '100%',
+      background: 'rgba(0, 0, 0, .10)',
     }
     return (
       <div className={styles.wrap}>
@@ -41,7 +39,7 @@ class Module1 extends Component {
             </IconButton>
           }
         />
-        <div>
+        <div className={styles.canvasWrap}>
           <canvas id='canvas' style={style} data-paper-resize />
         </div>
       </div>

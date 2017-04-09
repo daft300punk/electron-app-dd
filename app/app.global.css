@@ -11,3 +11,4 @@ body {
   font-family: 'roboto';
 }
 
+#root > [data-reactroot] { height: 100% }

@@ -12,17 +12,22 @@ class Drawer {
   initializeCanvas() {
     this.canvas = document.getElementById('canvas');
     this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
     paper.setup(this.canvas);
   }
 
   loadPaths(pathDataInSVG) {
     this.parentPath = new paper.CompoundPath(pathDataInSVG);
-    this.noOfPathInParent = this.parentPath;
-    this.currChildPos = 0;
+    this.noOfPathInParent = this.parentPath.children.length;
     this.parentPath.visible = true;
-    this.parentPath.strokeColor = 'black';
+    this.parentPath.strokeColor = new paper.Color(0, 0, 0, 0.1);
+    this.parentPath.position = new paper.Point(960 , 400);
+    
+    this.currChildPos = 0;
+
     this.animatedPath = new paper.CompoundPath();
     this.animatedPath.addChild(new paper.Path());
+    
     this.circleTip = new paper.Path.Circle({
       radius: 6,
       fillColor: 'white',
@@ -35,9 +40,7 @@ class Drawer {
   startAnimation() {
     this.animatedPath.strokeColor = 'red';
     this.animatedPath.strokeWidth = 4;
-    console.log(this.animatedPath);
     this.animatedPath.onFrame = (event) => {
-      console.log('inside onframe');
       const addPath = this.shouldAddPath(this.currChildPos);
       if (event.count < this.parentPath.length) {
         if (addPath) {
@@ -53,7 +56,6 @@ class Drawer {
 
             this.currChildPos++;
             this.animatedPath.addChild(new paper.Path());
-            console.log('path added');
           } else {
             //just add point
             this.animatedPath.children[this.currChildPos]
@@ -73,9 +75,7 @@ class Drawer {
   }
 
   shouldAddPath(index) {
-    console.log('youthob', this.parentPath.children[index]);
     if (this.parentPath.children[index]) {
-      console.log(true);
       return true;
     }
     return false;
