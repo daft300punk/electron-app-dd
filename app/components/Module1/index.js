@@ -21,6 +21,7 @@ class Module1 extends Component {
     myDrawer.initializeCanvas();
     myDrawer.loadPaths(compoundPathData);
     myDrawer.startAnimation();
+    myDrawer.listenForUserInput();
   }
 
 

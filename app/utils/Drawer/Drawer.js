@@ -7,6 +7,7 @@ class Drawer {
     this.noOfPathInParent;
     this.currChildPos;
     this.circleTip;
+    this.userDrawnPath;
   }
 
   initializeCanvas() {
@@ -21,7 +22,9 @@ class Drawer {
     this.noOfPathInParent = this.parentPath.children.length;
     this.parentPath.visible = true;
     this.parentPath.strokeColor = new paper.Color(0, 0, 0, 0.1);
+    this.parentPath.scale(2);
     this.parentPath.position = new paper.Point(960 , 400);
+
     
     this.currChildPos = 0;
 
@@ -74,6 +77,26 @@ class Drawer {
     }
   }
 
+  listenForUserInput() {
+    //initialize userDrawnPath
+    this.userDrawnPath = new paper.CompoundPath();
+
+    //set display properties for compound path
+    this.userDrawnPath.strokeColor = '#73ce1f';
+    this.userDrawnPath.strokeWidth = 4;
+    this.userDrawnPath.blendMode = 'multiply';
+
+    //set mouse input handlers
+    view.onMouseDown = (e) => {
+      this.userDrawnPath.addChild(new paper.Path());
+      this.userDrawnPath.lastChild.add(e.point);
+    };
+    view.onMouseDrag = (e) => {
+      this.userDrawnPath.lastChild.add(e.point);
+    }
+  }
+
+  //utility function to check if a children exists
   shouldAddPath(index) {
     if (this.parentPath.children[index]) {
       return true;
