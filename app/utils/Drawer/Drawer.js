@@ -12,8 +12,11 @@ class Drawer {
 
   initializeCanvas() {
     this.canvas = document.getElementById('canvas');
-    this.canvas.style.width = '100%';
-    this.canvas.style.height = '100%';
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight - 64;
+    this.canvas.style.height = window.innerHeight + 'px';
+    this.canvas.style.width = window.innerWidth + 'px';
+
     paper.setup(this.canvas);
   }
 
@@ -23,7 +26,7 @@ class Drawer {
     this.parentPath.visible = true;
     this.parentPath.strokeColor = new paper.Color(0, 0, 0, 0.1);
     this.parentPath.scale(2);
-    this.parentPath.position = new paper.Point(960 , 400);
+    this.parentPath.position = new paper.Point(window.innerWidth / 2 , (window.innerHeight - 64) / 2);
 
     
     this.currChildPos = 0;

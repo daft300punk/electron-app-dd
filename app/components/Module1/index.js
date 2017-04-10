@@ -18,31 +18,29 @@ const SVG_ARRAY = [
 class Module1 extends Component {
   constructor(props) {
     super(props);
+    this.currentPath = 0;
     this.onClickClose = props.onClickClose;
-    this.state = {
-      arrayOfSVGPaths: SVG_ARRAY,
-      myDrawer: new Drawer(),
-    };
+    this.myDrawer = new Drawer();
   }
 
   componentDidMount(svgPathData) {
-    this.startDrawer(this.state.arrayOfSVGPaths[0]);
+    this.startDrawer(SVG_ARRAY[0]);
   }
 
   startDrawer(svgPathData) {
     const compoundPathData = svgPathData;
 
-    this.state.myDrawer.initializeCanvas();
-    this.state.myDrawer.loadPaths(compoundPathData);
-    this.state.myDrawer.startAnimation();
-    this.state.myDrawer.listenForUserInput();
+    this.myDrawer.initializeCanvas();
+    this.myDrawer.loadPaths(compoundPathData);
+    this.myDrawer.startAnimation();
+    this.myDrawer.listenForUserInput();
   }
 
   onClickNext() {
     this.currentPath++;
-    if (this.state.arrayOfSVGPaths.length > this.currentPath) {
-      this.state.myDrawer.clearEverything();
-      this.startDrawer(this.state.arrayOfSVGPaths[this.currentPath]);
+    if (SVG_ARRAY.length > this.currentPath) {
+      this.myDrawer.clearEverything();
+      this.startDrawer(SVG_ARRAY[this.currentPath]);
     }
     else {
       console.log('No more path in array');
@@ -55,7 +53,6 @@ class Module1 extends Component {
 
   render() {
     const style = {
-      flexGrow: '1',
       background: 'rgba(0, 0, 0, .10)',
     }
     return (
@@ -70,7 +67,7 @@ class Module1 extends Component {
           iconElementRight={<FlatButton label="Finish" onClick={() => this.onClickNext()} />}
         />
         <div className={styles.canvasWrap}>
-            <canvas id='canvas' style={style} data-paper-resize />
+            <canvas id='canvas' style={style} />
         </div>
       </div>
     );
