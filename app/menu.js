@@ -9,7 +9,7 @@ export default class MenuBuilder {
   }
 
   buildMenu() {
-    if (process.env.NODE_ENV === 'development') {
+    if (true) {
       this.setupDevelopmentEnvironment();
     }
 

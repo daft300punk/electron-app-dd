@@ -105,7 +105,7 @@ class Drawer {
   }
 
   clearEverything() {
-    project.clear();
+    project.activeLayer.removeChildren();
   }
 }
 

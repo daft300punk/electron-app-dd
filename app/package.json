@@ -11,9 +11,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "material-ui": "^0.17.1",
-    "paper": "^0.10.3",
-    "react-tap-event-plugin": "^2.0.1",
-    "roboto-fontface": "^0.7.0"
+    "paper": "^0.10.3"
   }
 }
