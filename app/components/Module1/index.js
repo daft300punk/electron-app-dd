@@ -95,7 +95,7 @@ class Module1 extends Component {
               <NavigationClose />
             </IconButton>
           }
-          iconElementRight={<FlatButton label="Next" onClick={this.handleDialogOpen} />}
+          iconElementRight={SVG_ARRAY.length > this.currentPath && <FlatButton label="Next" onClick={this.handleDialogOpen} />}
         />
         <Dialog 
           title="See how you did"
