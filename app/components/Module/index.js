@@ -10,12 +10,6 @@ import Drawer from '../../utils/Drawer/Drawer';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 
-const SVG_ARRAY = [
-  'M213.1,6.7c-32.4-14.4-73.7,0-88.1,30.6C110.6,4.9,67.5-9.5,36.9,6.7C2.8,22.9-13.4,62.4,13.5,110.9 C33.3,145.1,67.5,170.3,125,217c59.3-46.7,93.5-71.9,111.5-106.1C263.4,64.2,247.2,22.9,213.1,6.7z',
-  'M66.44,73.5H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65m-206.22,30H272.65',
-  'M213.1,6.7c-32.4-14.4-73.7,0-88.1,30.6C110.6,4.9,67.5-9.5,36.9,6.7C2.8,22.9-13.4,62.4,13.5,110.9 C33.3,145.1,67.5,170.3,125,217c59.3-46.7,93.5-71.9,111.5-106.1C263.4,64.2,247.2,22.9,213.1,6.7z'
-];
-
 class Module extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +19,7 @@ class Module extends Component {
     this.state = {
       open: false,
     }
+    this.PATH_DATA_ARRAY = props.pathData;
   }
 
   handleDialogOpen = () => {
@@ -40,7 +35,7 @@ class Module extends Component {
   };
 
   componentDidMount(svgPathData) {
-    this.startDrawer(SVG_ARRAY[0]);
+    this.startDrawer(this.PATH_DATA_ARRAY[0]);
   }
 
   startDrawer(svgPathData) {
@@ -58,9 +53,9 @@ class Module extends Component {
     });
 
     this.currentPath++;   
-    if (SVG_ARRAY.length > this.currentPath) {
+    if (this.PATH_DATA_ARRAY.length > this.currentPath) {
       this.myDrawer.clearEverything();
-      this.startDrawer(SVG_ARRAY[this.currentPath]);
+      this.startDrawer(this.PATH_DATA_ARRAY[this.currentPath]);
     }
     else {
       console.log('No more path in array');
@@ -95,7 +90,7 @@ class Module extends Component {
               <NavigationClose />
             </IconButton>
           }
-          iconElementRight={SVG_ARRAY.length > this.currentPath && <FlatButton label="Next" onClick={this.handleDialogOpen} />}
+          iconElementRight={this.PATH_DATA_ARRAY.length > this.currentPath && <FlatButton label="Next" onClick={this.handleDialogOpen} />}
         />
         <Dialog 
           title="See how you did"

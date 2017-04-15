@@ -11,7 +11,10 @@ const ModuleContainer = ({ onClickClose, moduleType }) => {
   console.log(PATH_DATA[moduleType]);
   return (
     <MuiThemeProvider>
-      <Module onClickClose={onClickClose} />
+      <Module 
+        onClickClose={onClickClose}
+        pathData={PATH_DATA[moduleType]}
+      />
     </MuiThemeProvider>
   );
 }
