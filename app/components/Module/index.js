@@ -107,4 +107,9 @@ class Module extends Component {
   }
 }
 
+Module.propTypes = {
+  onClickClose: React.PropTypes.func,
+  pathData: React.PropTypes.array
+}
+
 export default Module;

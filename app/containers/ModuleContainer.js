@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import PATH_DATA from './pathData';
 
 const ModuleContainer = ({ onClickClose, moduleType }) => {
-  console.log(PATH_DATA[moduleType]);
   return (
     <MuiThemeProvider>
       <Module 
