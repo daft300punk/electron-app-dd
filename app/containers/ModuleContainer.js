@@ -1,14 +1,14 @@
 // @flow
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Module1 from '../components/Module1';
+import Module from '../components/Module';
 import { hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-const Module1Container = ({ onClickClose }) => {
+const ModuleContainer = ({ onClickClose }) => {
   return (
     <MuiThemeProvider>
-      <Module1 onClickClose={onClickClose} />
+      <Module onClickClose={onClickClose} />
     </MuiThemeProvider>
   );
 }
@@ -19,4 +19,4 @@ const mapStateToProps = () => ({
 
 export default connect(
   mapStateToProps
-)(Module1Container);
+)(ModuleContainer);
