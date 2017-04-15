@@ -17,7 +17,7 @@ export default class ModuleList extends Component {
         <Paper zDepth={1} style={style} className={styles.paperItem}>
           <div className={styles.moduleImage}></div>
           <div className={styles.moduleTitle}>
-            <Link to="/modules/1">Lines and Curves</Link>
+            <Link to="/modules/lines">Lines</Link>
           </div>
         </Paper>
         <Paper zDepth={1} style={style} className={styles.paperItem}>
