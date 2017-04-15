@@ -5,7 +5,8 @@ import Module from '../components/Module';
 import { hashHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-const ModuleContainer = ({ onClickClose }) => {
+const ModuleContainer = ({ onClickClose, moduleType }) => {
+  console.log(moduleType);
   return (
     <MuiThemeProvider>
       <Module onClickClose={onClickClose} />
@@ -13,8 +14,9 @@ const ModuleContainer = ({ onClickClose }) => {
   );
 }
 
-const mapStateToProps = () => ({
-  onClickClose: () => hashHistory.push('/')
+const mapStateToProps = (state, ownProps) => ({
+  onClickClose: () => hashHistory.push('/'),
+  moduleType: ownProps.type
 });
 
 export default connect(

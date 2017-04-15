@@ -9,6 +9,6 @@ import ModuleContainer from './containers/ModuleContainer'
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="/modules/lines" component={ModuleContainer} />
+    <Route path="/modules/lines" component={() => (<ModuleContainer type="lines" />)} />
   </Route>
 );
