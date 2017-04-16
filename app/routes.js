@@ -10,5 +10,6 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="/modules/lines" component={() => (<ModuleContainer type="lines" />)} />
+    <Route path="/modules/curves" component={() => (<ModuleContainer type="curves" />)} />
   </Route>
 );

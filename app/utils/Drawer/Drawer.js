@@ -45,6 +45,7 @@ class Drawer {
 
   startAnimation() {
     this.animatedPath.strokeColor = 'red';
+    this.animatedPath.opacity = '.5';
     this.animatedPath.strokeWidth = 4;
     this.animatedPath.onFrame = (event) => {
       const addPath = this.shouldAddPath(this.currChildPos);

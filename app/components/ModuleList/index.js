@@ -22,15 +22,27 @@ export default class ModuleList extends Component {
         </Paper>
         <Paper zDepth={1} style={style} className={styles.paperItem}>
           <div className={styles.moduleImage}></div>
-          <div className={styles.moduleTitle}>Module 1</div>
+          <div className={styles.moduleTitle}>
+            <Link to="/modules/curves">Curves</Link>
+          </div>
         </Paper>
         <Paper zDepth={1} style={style} className={styles.paperItem}>
           <div className={styles.moduleImage}></div>
-          <div className={styles.moduleTitle}>Module 1</div>
+          <div className={styles.moduleTitle}>
+            <Link to="/modules/muscle">Muscle</Link>
+          </div>
         </Paper>
         <Paper zDepth={1} style={style} className={styles.paperItem}>
           <div className={styles.moduleImage}></div>
-          <div className={styles.moduleTitle}>Module 1</div>
+          <div className={styles.moduleTitle}>
+            <Link to="/modules/proportions">Proportions</Link>
+          </div>
+        </Paper>
+        <Paper zDepth={1} style={style} className={styles.paperItem}>
+          <div className={styles.moduleImage}></div>
+          <div className={styles.moduleTitle}>
+            <Link to="/modules/right-brain">Right Brain</Link>
+          </div>
         </Paper>
       </div>
     );
