@@ -27,7 +27,6 @@ class Drawer {
     this.parentPath.strokeColor = new paper.Color(0, 0, 0, 0.1);
     this.parentPath.scale(2);
     this.parentPath.position = new paper.Point(window.innerWidth / 2 , (window.innerHeight - 64) / 2);
-
     
     this.currChildPos = 0;
 
@@ -50,10 +49,11 @@ class Drawer {
     this.animatedPath.onFrame = (event) => {
       const addPath = this.shouldAddPath(this.currChildPos);
       if (event.count < this.parentPath.length) {
+        //console.log(this.currChildPos);
         if (addPath) {
           const lengthCurrPathParent = this.parentPath.children[this.currChildPos].length;
-          const shouldAddEndPoint =
-            (event.count % lengthCurrPathParent) > (lengthCurrPathParent - 1);
+          let shouldAddEndPoint =
+            (event.count % lengthCurrPathParent) >= (lengthCurrPathParent - 1);
 
           if (shouldAddEndPoint) {
             //add end point, add a child, increase index 
