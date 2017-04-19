@@ -11,5 +11,8 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="/modules/lines" component={() => (<ModuleContainer type="lines" />)} />
     <Route path="/modules/curves" component={() => (<ModuleContainer type="curves" />)} />
+    <Route path="/modules/muscle" component={() => (<ModuleContainer type="muscle" />)} />
+    <Route path="/modules/proportions" component={() => (<ModuleContainer type="proportions" />)} />
+    <Route path="/modules/right-brain" component={() => (<ModuleContainer type="right-brain" />)} />
   </Route>
 );

@@ -49,7 +49,6 @@ class Drawer {
     this.animatedPath.onFrame = (event) => {
       const addPath = this.shouldAddPath(this.currChildPos);
       if (event.count < this.parentPath.length) {
-        //console.log(this.currChildPos);
         if (addPath) {
           const lengthCurrPathParent = this.parentPath.children[this.currChildPos].length;
           let shouldAddEndPoint =
