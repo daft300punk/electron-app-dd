@@ -16,7 +16,7 @@
 .moduleImage {
   height: 200px;
   width: 100%;
-  background: rgba(0, 0, 0, .1);
+  background: rgba(0, 0, 0, .05);
 }
 
 .moduleTitle {

@@ -114,7 +114,7 @@ class Module extends Component {
           }
         />
         <Dialog 
-          title="See how you did"
+          title="You did average!"
           actions={actions}
           modal={false}
           open={this.state.open}
