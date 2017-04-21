@@ -9,6 +9,7 @@ import paper, { view } from 'paper';
 import Drawer from '../../utils/Drawer/Drawer';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+import StarRatingComponent from 'react-star-rating-component';
 
 class Module extends Component {
   constructor(props) {
@@ -16,10 +17,10 @@ class Module extends Component {
     this.currentPath = 0;
     this.onClickClose = props.onClickClose;
     this.myDrawer = new Drawer();
+    this.PATH_DATA_ARRAY = props.pathData;
     this.state = {
       open: false,
     }
-    this.PATH_DATA_ARRAY = props.pathData;
   }
 
   handleDialogOpen = () => {
@@ -79,7 +80,25 @@ class Module extends Component {
         keyboardFocused={true}
         onTouchTap={this.onClickNext}
       />
-    ]
+    ];
+
+    const styleDialog = {
+      width: '600px'
+    }
+
+    const styleRating = {
+      transform: 'scale(2)',
+      padding: '12px'
+    }
+
+    const newSettings = {
+      rating: 3,
+      width: '64px',
+      height: '64px',
+      count: 5,
+      backgroundColor: 'gray',
+      
+    }
 
     return (
       <div className={styles.wrap}>
@@ -90,7 +109,9 @@ class Module extends Component {
               <NavigationClose />
             </IconButton>
           }
-          iconElementRight={this.PATH_DATA_ARRAY.length > this.currentPath && <FlatButton label="Next" onClick={this.handleDialogOpen} />}
+          iconElementRight={this.PATH_DATA_ARRAY.length > this.currentPath 
+            && <FlatButton label="Next" onClick={this.handleDialogOpen} />
+          }
         />
         <Dialog 
           title="See how you did"
@@ -98,7 +119,18 @@ class Module extends Component {
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleDialogClose}
-        />
+          contentStyle={styleDialog}
+        >
+          <StarRatingComponent
+            name="rate1"
+            startCount={5}
+            value={3}
+            editing={false}
+            renderStarIcon={(index, value) => {
+              return <span style={styleRating} className={index <= value ? 'fa fa-star' : 'fa fa-star-o'} />;
+            }}
+          />
+        </Dialog>
         <div className={styles.canvasWrap}>
           <canvas id='canvas' />
         </div>
